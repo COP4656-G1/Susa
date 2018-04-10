@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.susa.ajayioluwatobi.susa.PostActivity">
+
+    <EditText
+        android:id="@+id/address_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="74dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="39dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textLongMessage"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+    <EditText
+        android:id="@+id/edit_Price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/address_Text"
+        android:layout_alignStart="@+id/address_Text"
+        android:layout_below="@+id/address_Text"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="111dp" />
+
+    <Button
+        android:id="@+id/Post_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/feed_button"
+        android:layout_alignLeft="@+id/edit_Price"
+        android:layout_alignStart="@+id/edit_Price"
+        android:layout_marginBottom="119dp"
+        android:text="Post" />
+
+    <Button
+        android:id="@+id/feed_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Feed" />
+
+    <Spinner
+        android:id="@+id/location_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Post_Button"
+        android:layout_alignLeft="@+id/Post_Button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/Post_Button"
+        android:layout_marginBottom="46dp"
+        android:autofillHints="Location" />
+
+    <TextView
+        android:id="@+id/Location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/location_spinner"
+        android:layout_alignLeft="@+id/edit_Price"
+        android:layout_alignStart="@+id/edit_Price"
+        android:text="Location" />
+
+</RelativeLayout>

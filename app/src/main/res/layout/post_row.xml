@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="7dp"
+    android:elevation="120dp"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        android:orientation="vertical"
+        android:background="#c2c1bb">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/post_image"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="99dp"
+            android:background="#f7f7f6">
+
+            <TextView
+                android:id="@+id/post_dollar"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="$"
+                android:textColor="#0b0b0b"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/post_id"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/post_dollar"
+                android:layout_toRightOf="@+id/post_dollar"
+                android:text="Price"
+                android:textColor="#0b0b0b"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/post_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/post_id"
+                android:text="Address"
+                android:textColor="#0b0b0b"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/post_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/post_share"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Location"
+                android:textColor="#0b0b0b"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/post_share"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:clickable="true"
+                android:text="SHARE"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"
+                android:layout_marginBottom="3dp"/>
+
+            <TextView
+                android:id="@+id/post_details"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="DETAILS"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"
+                android:clickable="true"
+                android:layout_marginBottom="3dp"
+                />
+
+            <TextView
+                android:id="@+id/post_contact"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:text="CONTACT"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"
+                android:layout_marginBottom="3dp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
