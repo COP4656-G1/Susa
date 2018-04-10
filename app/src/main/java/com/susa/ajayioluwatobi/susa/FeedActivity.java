@@ -2,6 +2,7 @@ package com.susa.ajayioluwatobi.susa;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +24,7 @@ public class FeedActivity extends AppCompatActivity {
     private RecyclerView mPostList;
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
-
+    private FloatingActionButton fab;
 
 
     @Override
@@ -31,6 +32,7 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
         firebaseAuth= FirebaseAuth.getInstance();
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         Intent intent= getIntent();
 
@@ -50,6 +52,11 @@ public class FeedActivity extends AppCompatActivity {
     }
 
 
+    protected  void fab(View view)
+    {
+        Intent intent = new Intent(FeedActivity.this,PostActivity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onStart() {
         super.onStart();
