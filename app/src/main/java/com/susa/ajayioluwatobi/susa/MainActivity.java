@@ -26,17 +26,23 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private TextView info;
 
+	private DatabaseReference mDatabase;	//to access FirebaseDatabase - WJL
+	
     private Button RegisterButton;
     private TextView LoginText;
     private EditText Email;
     private EditText PasswordText;
-
+    private EditText mUsername;
+    
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     private static final String TAG = "EmailPassword";
@@ -56,8 +62,12 @@ public class MainActivity extends AppCompatActivity {
         Email= (EditText) findViewById(R.id.email);
         PasswordText = (EditText) findViewById(R.id.login_Password);
         progressDialog= new ProgressDialog(this);
+		
+		//mUsername = (EditText) findViewById(R.id.user_name);
+		
+		
         firebaseAuth= FirebaseAuth.getInstance();
-
+		mDatabase = FirebaseDatabase.getInstance().getReference();
 
         info= findViewById(R.id.info);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -108,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
         String email= Email.getText().toString().trim();
         String password= PasswordText.getText().toString().trim();
 
+		
+		String check = mEmailField.getText().toString();
 
         if(TextUtils.isEmpty(email)){
 
@@ -116,6 +128,26 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+		  if(check.contains("@")){	//checks to see if there is an email entered - WJL
+            check = check.split("@")[1];
+
+            if(check.equalsIgnoreCase("my.fsu.edu") || check.equalsIgnoreCase("tcc.fl.edu")){		//makes sure user registering has a College Email - WJL
+
+            }else{
+                Toast.makeText(SignInActivity.this, "College Email Required",
+                        Toast.LENGTH_LONG).show();
+				return;            
+			}
+        }//end of large if - WJL
+        else if{//made in case of false positive - WJL
+            Toast.makeText(SignInActivity.this, "Email Required",
+                    Toast.LENGTH_LONG).show();
+
+            return;
+
+        }
+	
+		
         if(TextUtils.isEmpty(password)){
             // password empty
             Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
@@ -133,6 +165,11 @@ public class MainActivity extends AppCompatActivity {
 
                             // Sign in success, update UI with the signed-in user's information
                           //  Log.d(TAG, "createUserWithEmail:success");
+						  
+						  
+						    OnSuccess(task.getResult().getUser());	//function that stores user information into database - WJL
+							
+							
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Toast.makeText(MainActivity.this, "Authentication Successful.",
                                     Toast.LENGTH_SHORT).show();
@@ -161,6 +198,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+	
+	 private void OnSuccess(FirebaseUser user){
+		String username = mUsername.getText().toString();
+        newUser(user.getUid(), username, user.getEmail());
+		
+        finish();
+    }
+	
+	 private void newUser(String userID, String name, String email) {
+        User user = new User(name, email);
+
+        mDatabase.child("users").child(userID).setValue(user);
     }
 
 }
