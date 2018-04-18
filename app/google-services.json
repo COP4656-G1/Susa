@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "250080043736",
+    "firebase_url": "https://susa-67f96.firebaseio.com",
+    "project_id": "susa-67f96",
+    "storage_bucket": "susa-67f96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250080043736:android:a569db57c0957eec",
+        "android_client_info": {
+          "package_name": "com.susa.ajayioluwatobi.susa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "250080043736-kqibbu1346o2c01v6tbntdo6hsqdkqlv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEVYVYnnuZOrGQ0jvx9lmCuKpGHyyBvPs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
