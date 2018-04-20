@@ -13,7 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -116,6 +119,11 @@ public class FavoritesActivity extends AppCompatActivity {
         list.add(userid); 					//
         list.add(useremail); 				//
 
+
+        //initializing toolbar
+        Toolbar myToolbar=(Toolbar) findViewById(R.id.my_toolbar) ;
+        myToolbar.inflateMenu(R.menu.bar_meu);
+        setSupportActionBar(myToolbar);
 
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout); //
@@ -266,6 +274,31 @@ public class FavoritesActivity extends AppCompatActivity {
             mDrawerList.setSelection(position);
             mDrawer.closeDrawer(mDrawerList);
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bar_meu, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id== R.id.action_map){
+            Intent intent = new Intent(FavoritesActivity.this, MapViewActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if(id == R.id.action_favorites){
+            Intent intent = new Intent(FavoritesActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

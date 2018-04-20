@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.0.0-alpha1'
@@ -36,6 +36,8 @@ dependencies {
     compile 'com.google.firebase:firebase-storage:12.0.0'
     compile 'com.firebaseui:firebase-ui-database:0.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.android.gms:play-services:12.0.0'
+    compile 'com.android.support:support-core-utils:26.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

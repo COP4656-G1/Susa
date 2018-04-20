@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,7 +41,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
     private ArrayList<String> list; 		//implement to store Tab Names - WJL
 
     private DatabaseReference databaseReference,db2;
-
+    private  Uri mdownloadUri;
     private EditText address, price,desc;
     private Button post;
     private Button feed;
@@ -62,6 +64,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
+
     boolean image1= false;
     boolean image2= false;
     boolean image3= false;
@@ -80,10 +83,18 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
         location = (Spinner) findViewById(R.id.location_spinner);
         location.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         mSelectImage= (Button) findViewById(R.id.upload_image) ;
-
+        mdownloadUri= Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/drawable/no_image_available");
+         post_image= Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/drawable/no_image_available");
+         post_image2 = Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/drawable/no_image_available");
+         post_image3 = Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/drawable/no_image_available");
         image_1= (ImageView) findViewById(R.id.image_1);
         image_2=  (ImageView)   findViewById(R.id.image_2);
         image_3=    (ImageView) findViewById(R.id.image_3);
+
+        Toolbar myToolbar=(Toolbar) findViewById(R.id.my_toolbar) ;
+       // myToolbar.inflateMenu(R.menu.bar_meu);
+
+        setSupportActionBar(myToolbar);
 
 
 
@@ -155,13 +166,14 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postLease();
-                if(location_assert) {
+
+                if(location_assert && FormComplete() ) {
+                    postLease();
                     Intent intent = new Intent(PostActivity.this, FeedActivity.class);
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(PostActivity.this ,"Please select location" ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(PostActivity.this ,"Please Fill in fields" ,Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -209,8 +221,9 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Toast.makeText(PostActivity.this, "Upload Done", Toast.LENGTH_LONG).show();
 
+                    mdownloadUri= Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/drawable/no_image_available");
 
-                    Uri mdownloadUri = taskSnapshot.getDownloadUrl();
+                    mdownloadUri = taskSnapshot.getDownloadUrl();
                     if(!image1) {
                         Picasso.with(PostActivity.this).load(mdownloadUri).fit().centerCrop().into(image_1);
                         post_image= mdownloadUri;
@@ -327,5 +340,17 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
             mDrawerList.setSelection(position);
             mDrawer.closeDrawer(mDrawerList);
         }
+    }
+
+    private boolean FormComplete(){
+    String Address= address.getText().toString().trim();
+
+        String Price = price.getText().toString().trim();
+        String Description= desc.getText().toString().trim();
+
+        if(TextUtils.isEmpty(Address)|| TextUtils.isEmpty(Description)|| TextUtils.isEmpty(Price)){
+            return false;
+        }
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 package com.susa.ajayioluwatobi.susa;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -22,8 +25,11 @@ import android.widget.Toast;
 import android.content.res.Configuration;//These are added to implement the Navigation Drawer - WJL
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +45,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class FeedActivity extends AppCompatActivity {
+    private static final String TAG= "MapViewActivity";
+    private static final int ERROR_DIALOG_REQUEST = 9001;
+    Log log;
+
+
     private RecyclerView mPostList;
     private DatabaseReference mDatabase,db;
     private DatabaseReference nameDB, DBname, nameDB1, nameDB2, nameDB3;
@@ -180,6 +191,15 @@ public class FeedActivity extends AppCompatActivity {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         likeButton = (Button) findViewById(R.id.button2);
         Intent intent= getIntent();
+        if(IsServicesOk()){
+            init();
+        }
+
+
+     //initializing toolbar
+      Toolbar myToolbar=(Toolbar) findViewById(R.id.my_toolbar) ;
+      myToolbar.inflateMenu(R.menu.bar_meu);
+      setSupportActionBar(myToolbar);
 
         //Getting DB references
 
@@ -247,6 +267,37 @@ public class FeedActivity extends AppCompatActivity {
         mPostList.setLayoutManager(new LinearLayoutManager(this));
 
 
+    }
+
+    private void init(){
+
+    }
+
+
+    public boolean IsServicesOk() {
+
+        log.d(TAG, "isServicesOK: checking google services version");
+
+        int available= GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(FeedActivity.this);
+
+        if(available== ConnectionResult.SUCCESS) {
+            //everything is fine and the user can make map request
+            log.d(TAG, "isServicesOK: Google Play is working");
+            return true;
+        }
+        else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            //if error occurred but can be fixed
+            log.d(TAG, "isServicesOK: Error occured but can be fixed");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(FeedActivity.this, available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+
+
+        }
+        else
+        {
+            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_LONG).show();
+        }
+        return false;
     }
 
     //The onStart contains code that will populate the views.
@@ -336,6 +387,31 @@ public class FeedActivity extends AppCompatActivity {
         }
     }
 
+    //to inflate tool bar
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bar_meu, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id== R.id.action_map){
+            Intent intent = new Intent(FeedActivity.this, MapViewActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if(id == R.id.action_favorites){
+            Intent intent = new Intent(FeedActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
 
