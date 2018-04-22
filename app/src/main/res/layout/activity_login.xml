@@ -11,41 +11,47 @@
     <EditText
         android:id="@+id/login_Password"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
 
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="Password"
+        android:background="@drawable/edittextstyle"
+        android:padding="5dp"/>
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_Password"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Login" />
+        android:layout_marginBottom="202dp"
+        android:text="Login"
+        android:theme="@style/MyButton" />
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_above="@+id/login_Password"
         android:layout_alignLeft="@+id/login_Password"
         android:layout_alignStart="@+id/login_Password"
         android:layout_marginBottom="17dp"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edittextstyle"
+        android:padding="5dp"/>
 
     <TextView
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_login"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="160dp"
         android:text="Forgot Password?" />
 
     <TextView
@@ -55,7 +61,9 @@
         android:layout_above="@+id/login_email"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="35dp"
-        android:text="User Login" />
+        android:text="Sign In"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
 
 </RelativeLayout>

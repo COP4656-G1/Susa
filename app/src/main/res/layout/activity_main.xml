@@ -25,33 +25,35 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/login_Password"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="31dp"
+        android:layout_marginTop="202dp"
+        android:background="@drawable/edittextstyle"
         android:ems="10"
+        android:hint="Email "
         android:inputType="textEmailAddress"
-        android:hint="Email " />
+        android:padding="5dp" />
 
     <EditText
         android:id="@+id/login_Password"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/login_button"
-        android:layout_alignLeft="@+id/email"
-        android:layout_alignStart="@+id/email"
-        android:layout_marginBottom="35dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/edittextstyle"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/info"
+        android:layout_alignBaseline="@+id/info"
         android:layout_centerHorizontal="true"
-        android:text="Register" />
+        android:text="Register"
+        android:theme="@style/MyButton" />
 
     <TextView
         android:id="@+id/login_text"
@@ -61,7 +63,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:clickable="true"
-        android:text="Already registered? login here" />
+        android:text="Already Signed Up? Sign in here" />
 
     <TextView
         android:id="@+id/textView2"
@@ -69,18 +71,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:text="User register" />
+        android:layout_marginTop="80dp"
+        android:text="Sign Up"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="132dp"
+        android:background="@drawable/edittextstyle"
         android:ems="10"
         android:hint="Name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:padding="5dp" />
 
 </RelativeLayout>
