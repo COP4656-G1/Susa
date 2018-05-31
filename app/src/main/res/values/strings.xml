@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Susa</string>
+    <string name="facebook_app_id">2031732753741438</string>
+    <string name="google_maps_API_key">AIzaSyDgtP4CYIRvHY-cm9RMNMxJtmZlKQtx_2w</string>
+    <string name="fb_login_protocol_scheme">fb2031732753741438</string>
+
+
+    <string-array name="location">
+        <item>Tallahassee</item>
+        <item>Orlando</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="80dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Title"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="22sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="left"
+            android:text="Description"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/bottom_image1"
+            android:layout_marginEnd="23dp"
+            android:clickable="true"
+            android:text="Remove from favorites"
+            android:textSize="15dp"
+            android:id="@+id/remove_post"/>
+
+        <ImageView
+            android:id="@+id/bottom_image1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv2"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/bottom_image2"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv2"
+            android:layout_toEndOf="@+id/bottom_image1"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/bottom_image3"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv2"
+            android:layout_toStartOf="@+id/vacant_post"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/message_post"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/vacant_post"
+            android:clickable="true"
+            android:src="@drawable/ic_action_message" />
+
+
+        <ImageView
+            android:id="@+id/delete_post"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/bottom_image1"
+            android:layout_alignStart="@+id/message_post"
+            android:clickable="true"
+            android:src="@drawable/ic_action_delete" />
+
+        <ImageView
+            android:id="@+id/like_post"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:src="@drawable/ic_action_likes"
+            android:layout_alignParentRight="true" />
+        <ImageView
+            android:id="@+id/post_unlike"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:src="@drawable/ic_action_unlike"
+            android:layout_alignParentRight="true" />
+
+
+        <Button
+            android:id="@+id/vacant_post"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="VACANT"
+            android:textSize="10dp" />
+
+
+        <Button
+            android:id="@+id/occupied_post"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="OCCUPIED"
+            android:textSize="10dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

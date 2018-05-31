@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.susa.ajayioluwatobi.susa.MainActivity"
+    android:background="#333333"
+    >
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="300dp"
+        android:layout_height="66dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="253dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/user_name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="121dp"
+        android:text="or"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp" />
+
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="212dp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-212dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:hint="Email"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorPrimary" />
+
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="89dp"
+        android:text="Sign Up"
+        android:theme="@style/MyButton" />
+
+    <TextView
+        android:id="@+id/login_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:clickable="true"
+        android:text="Already Signed Up? Sign in here"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:src="@drawable/signup_logo" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="179dp"
+        android:text="Sign Up"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
+
+    <EditText
+        android:id="@+id/login_Password"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="223dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorPrimary" />
+
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="288dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorPrimary" />
+
+
+</RelativeLayout>
